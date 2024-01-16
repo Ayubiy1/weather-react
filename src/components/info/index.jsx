@@ -27,7 +27,7 @@ const InfoComp = () => {
             </p>
 
             <div>
-              <p className="m-0 text">Andijon Shahri</p>
+              <p className="m-0 text">{dataTwo?.name} Sity</p>
               <p className="m-0 text">
                 {dayjs(new Date()).format("DD MMMM YYYY")}
               </p>
