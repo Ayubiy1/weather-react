@@ -7,6 +7,8 @@ const InfoComp = () => {
   const { data, dataTwo } = useContext(Contexts);
   var vaqtZonasi = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
+  // console.log(dataTwo?.weather);
+
   return (
     <>
       <div className="info">
@@ -15,7 +17,9 @@ const InfoComp = () => {
         <div className="flex flex-col gap-4 md:flex-row items-center md:justify-between mt-10">
           <div className="flex items-end h-[100px]">
             <p className="m-0 degree">{Math.round(dataTwo?.main?.temp)}°C</p>
-            {/* <p className="m-0 text">{dataTwo?.weather[0]?.main}</p> */}
+            <p className="m-0 text text-[#ffc801]">
+              {/* {dataTwo?.weather[0]?.main} */}
+            </p>
           </div>
 
           <div>

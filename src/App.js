@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import HeaderComp from "./components/header";
 import { useLocalStorageState } from "ahooks";
 
-const API_KEY = "21239f5f2ee5f4603ca704cabc526de4";
+const API_KEY = "8fbd22850a8d16bd2b2c577075e4846f";
 
 function App() {
   const [data, setData] = useState([]);
@@ -17,8 +17,10 @@ function App() {
   const [sityName, setsityName] = useState("toshkent");
   const [token, settoken] = useState("");
   const [aPi, setAPi] = useLocalStorageState("token", {
-    defaultValue: "21239f5f2ee5f4603ca704cabc526de4",
+    defaultValue: "8fbd22850a8d16bd2b2c577075e4846f",
   });
+
+  let sityNameN = "toshkent";
 
   useEffect(() => {
     const Api = async () => {
@@ -26,21 +28,22 @@ function App() {
         lon = "";
 
       try {
-        const response =
-          await axios.get`https://api.openweathermap.org/data/2.5/weather?q=${sityName}&appid=${aPi}`;
+        const response = await axios.get(
+          `https://api.openweathermap.org/data/2.5/weather?q=${sityName}&appid=${aPi}`
+        );
+        console.log(response);
 
         lat = response?.data?.coord?.lat;
         lon = response?.data?.coord?.lon;
 
-        console.log(response?.data);
-
-        const res =
-          await axios.get`https://api.openweathermap.org/data/2.5/weather?units=metric&lat=${lat}&lon=${lon}&appid=${aPi}`;
+        const res = await axios.get(
+          `https://api.openweathermap.org/data/2.5/weather?units=metric&lat=${lat}&lon=${lon}&appid=${aPi}`
+        );
+        setLoading(false);
 
         console.log(res?.data);
         setData(response?.data);
         setDataTwo(res?.data);
-        setLoading(false);
       } catch (error) {
         console.error(error);
       }
@@ -53,26 +56,36 @@ function App() {
       <Contexts.Provider
         value={{ dataTwo, data, setData, setsityName, setLoading }}
       >
-        {loading == false ? (
+        {loading !== false ? (
           <div className="h-[100vh] w-[100%] flex flex-col items-center justify-center text-white text-[30px]">
             Loading...
             <div>
-              <input
-                onChange={(e) => {
-                  settoken(e.target.value);
-                }}
-              />
-              <button
-                onClick={() => {
-                  if (token !== "") {
-                    setAPi(token);
-                  } else {
-                    alert("Please enter a token");
-                  }
-                }}
+              <div className="flex items-center justify-center mt-2">
+                <input
+                  onChange={(e) => {
+                    settoken(e.target.value);
+                  }}
+                />
+                <button
+                  onClick={() => {
+                    if (token !== "") {
+                      setAPi(token);
+                    } else {
+                      alert("Please enter a token");
+                    }
+                  }}
+                >
+                  newn token
+                </button>
+              </div>
+
+              <a
+                className="text-white text-[16px]"
+                target="_blank"
+                href="https://home.openweathermap.org/api_keys"
               >
-                token
-              </button>
+                token da xatolik chiqib qolsa
+              </a>
             </div>
           </div>
         ) : (

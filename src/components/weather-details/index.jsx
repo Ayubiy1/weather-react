@@ -6,6 +6,7 @@ import "./style.css";
 
 const WeatherDetails = () => {
   const { data, dataTwo } = useContext(Contexts);
+  // console.log(dataTwo?.weather[0]?.description);
 
   return (
     <div className="parent w-[100%] md:w-[45%] mx-10">
@@ -17,14 +18,14 @@ const WeatherDetails = () => {
             className="w-[60px] mt-[-4px]"
           />
           <p className="m-0 text-center mt-[-10px]">
-            1.34 km/h <br /> Speed
+            {dataTwo?.wind?.speed} km/h <br /> Speed
           </p>
         </div>
       </div>
 
       <div className="childern">
         <div className="flex items-center justify-center font-bold">
-          clouds showes
+          {dataTwo?.weather ? dataTwo?.weather[0]?.description : ""}
         </div>
       </div>
 

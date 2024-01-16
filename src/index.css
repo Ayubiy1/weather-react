@@ -15,11 +15,10 @@ body {
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url("./components/./imgs/bacground-all.png");
-  background-repeat: no-repeat;
+  background: url("./components/./imgs/bacground-all.png") no-repeat center;
   background-size: cover;
-  background-position: fixed;
-  height: 100vh;
+  /* background-position: fixed; */
+  /* height: 100vh; */
 }
 
 code {
