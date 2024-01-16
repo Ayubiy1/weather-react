@@ -6,6 +6,7 @@ import WeatherForecast from "./components/weather-forecast";
 import Contexts from "./context";
 import { useEffect, useState } from "react";
 import HeaderComp from "./components/header";
+import { useLocalStorageState } from "ahooks";
 
 const API_KEY = "21239f5f2ee5f4603ca704cabc526de4";
 
@@ -14,6 +15,10 @@ function App() {
   const [dataTwo, setDataTwo] = useState([]);
   const [loading, setLoading] = useState(false);
   const [sityName, setsityName] = useState("toshkent");
+  const [token, settoken] = useState("");
+  const [aPi, setAPi] = useLocalStorageState("token", {
+    defaultValue: "21239f5f2ee5f4603ca704cabc526de4",
+  });
 
   useEffect(() => {
     const Api = async () => {
@@ -22,7 +27,7 @@ function App() {
 
       try {
         const response =
-          await axios.get`https://api.openweathermap.org/data/2.5/weather?q=${sityName}&appid=21239f5f2ee5f4603ca704cabc526de4`;
+          await axios.get`https://api.openweathermap.org/data/2.5/weather?q=${sityName}&appid=${aPi}`;
 
         lat = response?.data?.coord?.lat;
         lon = response?.data?.coord?.lon;
@@ -30,7 +35,7 @@ function App() {
         console.log(response?.data);
 
         const res =
-          await axios.get`https://api.openweathermap.org/data/2.5/weather?units=metric&lat=${lat}&lon=${lon}&appid=21239f5f2ee5f4603ca704cabc526de4`;
+          await axios.get`https://api.openweathermap.org/data/2.5/weather?units=metric&lat=${lat}&lon=${lon}&appid=${aPi}`;
 
         console.log(res?.data);
         setData(response?.data);
@@ -49,8 +54,26 @@ function App() {
         value={{ dataTwo, data, setData, setsityName, setLoading }}
       >
         {loading == false ? (
-          <div className="h-[100vh] w-[100%] flex items-center justify-center text-white text-[30px]">
+          <div className="h-[100vh] w-[100%] flex flex-col items-center justify-center text-white text-[30px]">
             Loading...
+            <div>
+              <input
+                onChange={(e) => {
+                  settoken(e.target.value);
+                }}
+              />
+              <button
+                onClick={() => {
+                  if (token !== "") {
+                    setAPi(token);
+                  } else {
+                    alert("Please enter a token");
+                  }
+                }}
+              >
+                token
+              </button>
+            </div>
           </div>
         ) : (
           <div>

@@ -7,8 +7,6 @@ const InfoComp = () => {
   const { data, dataTwo } = useContext(Contexts);
   var vaqtZonasi = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
-  // console.log(dataTwo?.weather[0]?.main);
-
   return (
     <>
       <div className="info">
