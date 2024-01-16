@@ -1,0 +1,32 @@
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.seach {
+  height: 40px;
+}
+
+.seach > input {
+  background-color: transparent;
+  height: 100%;
+  border: 2px solid rgba(0, 0, 0, 0.4);
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  outline: none;
+}
+.seach > input::placeholder {
+  font-weight: 600;
+  font-size: 17px;
+}
+.seach > button {
+  height: 100%;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.4);
+  border: none;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+}
