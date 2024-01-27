@@ -12,7 +12,7 @@ const API_KEY = "8fbd22850a8d16bd2b2c577075e4846f";
 
 function App() {
   const [data, setData] = useState([]);
-  const [dataTwo, setDataTwo] = useState([]);
+  const [dataTwo, setDataTwo] = useState(null);
   const [loading, setLoading] = useState(false);
   const [sityName, setsityName] = useState("toshkent");
   const [token, settoken] = useState("");
@@ -28,10 +28,11 @@ function App() {
         lon = "";
 
       try {
+        setLoading(true);
+
         const response = await axios.get(
           `https://api.openweathermap.org/data/2.5/weather?q=${sityName}&appid=${aPi}`
         );
-        console.log(response);
 
         lat = response?.data?.coord?.lat;
         lon = response?.data?.coord?.lon;
@@ -41,11 +42,10 @@ function App() {
         );
         setLoading(false);
 
-        console.log(res?.data);
         setData(response?.data);
         setDataTwo(res?.data);
       } catch (error) {
-        console.error(error);
+        alert(error);
       }
     };
     Api();

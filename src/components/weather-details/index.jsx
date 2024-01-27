@@ -6,7 +6,6 @@ import "./style.css";
 
 const WeatherDetails = () => {
   const { data, dataTwo } = useContext(Contexts);
-  // console.log(dataTwo?.weather[0]?.description);
 
   return (
     <div className="parent w-[100%] md:w-[45%] mx-10">
@@ -25,7 +24,7 @@ const WeatherDetails = () => {
 
       <div className="childern">
         <div className="flex items-center justify-center font-bold">
-          {dataTwo?.weather ? dataTwo?.weather[0]?.description : ""}
+          {/* {dataTwo ? dataTwo?.weather[0]?.description : ""} */}
         </div>
       </div>
 
