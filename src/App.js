@@ -80,7 +80,7 @@ function App() {
               </div>
 
               <a
-                className="text-white text-[16px]"
+                className="text-white text-[16px] text-center"
                 target="_blank"
                 href="https://home.openweathermap.org/api_keys"
               >

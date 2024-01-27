@@ -24,7 +24,7 @@ const WeatherDetails = () => {
 
       <div className="childern">
         <div className="flex items-center justify-center font-bold">
-          {/* {dataTwo ? dataTwo?.weather[0]?.description : ""} */}
+          {dataTwo ? dataTwo?.weather[0]?.description : ""}
         </div>
       </div>
 
